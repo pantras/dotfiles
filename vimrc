@@ -20,3 +20,7 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 " show tabs and trailing spaces
 set list
 set listchars=tab:▸\ ,trail:▝
+
+" persistent undo
+set undofile
+" setundodir=~/.vim/undodir
