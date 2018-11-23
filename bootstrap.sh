@@ -1,16 +1,13 @@
 #!/bin/bash
 ############################
-# .make.sh
+# bootstrap.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 #
 # Based on https://github.com/michaeljsmalley/dotfiles/blob/master/makesymlinks.sh
 ############################
 
-########## Variables
-
 dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc"    # list of files/folders to symlink in homedir
+olddir=~/.dotfiles_old            # old dotfiles backup directory
 
 ##########
 
@@ -27,11 +24,11 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in *; do
 echo "current: $file"
-    if [ "$file" == "bootstrap.sh" ]; then
+    if [ "$file" == "bootstrap.sh" -o "$file" == "README.md" ]; then
         continue
     fi
     echo "Moving $file from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file $olddir
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
